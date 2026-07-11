@@ -3,7 +3,7 @@ import { runPipeline } from '@/lib/agents/orchestrator';
 
 // The Anthropic SDK needs the Node.js runtime, not the Edge runtime.
 export const runtime = 'nodejs';
-
+export const maxDuration = 60;
 // Serverless function time budget. The pipeline makes 5 sequential Claude
 // calls, one of which does live web research, so give it real headroom.
 // Vercel Hobby caps functions at 60s regardless of this value — Pro/Enterprise
