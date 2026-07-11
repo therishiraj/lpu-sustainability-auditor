@@ -7,8 +7,7 @@ export const maxDuration = 60;
 // Serverless function time budget. The pipeline makes 5 sequential Claude
 // calls, one of which does live web research, so give it real headroom.
 // Vercel Hobby caps functions at 60s regardless of this value — Pro/Enterprise
-// plans can use up to 300s (or 800s with Fluid Compute). See README.
-export const maxDuration = 300;
+// plans can use up to 300s (or 800s with Fluid Compute). See README
 
 export async function POST() {
   const encoder = new TextEncoder();
