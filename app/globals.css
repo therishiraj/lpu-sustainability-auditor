@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  border-color: #233028;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: #0F1512;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.045) 1px, transparent 0);
+  background-size: 22px 22px;
+  color: #F4F7F5;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+code,
+.font-mono,
+[data-numeric='true'] {
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Visible keyboard focus states everywhere */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #E8B339;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Thin instrument-panel scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #2E3F35;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #4FBA8F;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Markdown report typography */
+.report-body h2 {
+  font-family: var(--font-mono), monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.8rem;
+  color: #4FBA8F;
+  border-bottom: 1px solid #233028;
+  padding-bottom: 0.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.report-body h2:first-child {
+  margin-top: 0;
+}
+.report-body p {
+  color: #C7D2CC;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+.report-body ul,
+.report-body ol {
+  color: #C7D2CC;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  padding-left: 1.25rem;
+}
+.report-body li {
+  margin-bottom: 0.4rem;
+}
+.report-body ul {
+  list-style-type: disc;
+}
+.report-body ol {
+  list-style-type: decimal;
+}
+.report-body strong {
+  color: #F4F7F5;
+  font-weight: 600;
+}
+.report-body a {
+  color: #E8B339;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.report-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+.report-body th,
+.report-body td {
+  border: 1px solid #233028;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+.report-body th {
+  background-color: #141B17;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #8CA098;
+}

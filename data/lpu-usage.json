@@ -1,0 +1,25 @@
+{
+  "_note": "SAMPLE / DEMO DATA. This dataset stands in for a real university ERP export (facilities management + hostel occupancy + utility billing systems). Replace with real monthly exports to run a genuine audit — see README 'Swap in real institutional data'.",
+  "institution": {
+    "name": "Lovely Professional University (LPU)",
+    "location": "Phagwara, Punjab, India",
+    "student_population": 30000,
+    "hostel_capacity": 22000,
+    "campus_area_acres": 600
+  },
+  "monthly": [
+    { "month": "2024-08", "electricity_kwh": 3750000, "water_kl": 58000, "waste_kg": 410000, "waste_diverted_pct": 38, "green_cover_pct": 22.0, "hostel_occupancy_pct": 92, "solar_generation_kwh": 410000 },
+    { "month": "2024-09", "electricity_kwh": 3820000, "water_kl": 59500, "waste_kg": 418000, "waste_diverted_pct": 39, "green_cover_pct": 22.0, "hostel_occupancy_pct": 94, "solar_generation_kwh": 395000 },
+    { "month": "2024-10", "electricity_kwh": 3700000, "water_kl": 58800, "waste_kg": 405000, "waste_diverted_pct": 40, "green_cover_pct": 22.1, "hostel_occupancy_pct": 93, "solar_generation_kwh": 430000 },
+    { "month": "2024-11", "electricity_kwh": 3550000, "water_kl": 56200, "waste_kg": 392000, "waste_diverted_pct": 41, "green_cover_pct": 22.1, "hostel_occupancy_pct": 90, "solar_generation_kwh": 400000 },
+    { "month": "2024-12", "electricity_kwh": 2780000, "water_kl": 39500, "waste_kg": 268000, "waste_diverted_pct": 40, "green_cover_pct": 22.2, "hostel_occupancy_pct": 58, "solar_generation_kwh": 340000 },
+    { "month": "2025-01", "electricity_kwh": 3050000, "water_kl": 45000, "waste_kg": 305000, "waste_diverted_pct": 42, "green_cover_pct": 22.2, "hostel_occupancy_pct": 71, "solar_generation_kwh": 310000 },
+    { "month": "2025-02", "electricity_kwh": 3600000, "water_kl": 58000, "waste_kg": 404000, "waste_diverted_pct": 43, "green_cover_pct": 22.3, "hostel_occupancy_pct": 95, "solar_generation_kwh": 380000 },
+    { "month": "2025-03", "electricity_kwh": 3780000, "water_kl": 60100, "waste_kg": 415000, "waste_diverted_pct": 44, "green_cover_pct": 22.3, "hostel_occupancy_pct": 96, "solar_generation_kwh": 440000 },
+    { "month": "2025-04", "electricity_kwh": 4150000, "water_kl": 63500, "waste_kg": 420000, "waste_diverted_pct": 45, "green_cover_pct": 22.4, "hostel_occupancy_pct": 96, "solar_generation_kwh": 470000 },
+    { "month": "2025-05", "electricity_kwh": 4320000, "water_kl": 61000, "waste_kg": 388000, "waste_diverted_pct": 45, "green_cover_pct": 22.4, "hostel_occupancy_pct": 88, "solar_generation_kwh": 500000 },
+    { "month": "2025-06", "electricity_kwh": 2650000, "water_kl": 33000, "waste_kg": 240000, "waste_diverted_pct": 44, "green_cover_pct": 22.5, "hostel_occupancy_pct": 45, "solar_generation_kwh": 480000 },
+    { "month": "2025-07", "electricity_kwh": 3880000, "water_kl": 57000, "waste_kg": 398000, "waste_diverted_pct": 46, "green_cover_pct": 22.5, "hostel_occupancy_pct": 82, "solar_generation_kwh": 420000 },
+    { "month": "2025-08", "electricity_kwh": 3900000, "water_kl": 59000, "waste_kg": 412000, "waste_diverted_pct": 47, "green_cover_pct": 22.6, "hostel_occupancy_pct": 93, "solar_generation_kwh": 415000 }
+  ]
+}
