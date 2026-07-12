@@ -34,26 +34,41 @@ const SEED_DATA = [
   {
     institution: 'Amrita Vishwa Vidyapeetham',
     type: 'comparable',
-    summary: '',
-    programs: [],
-    source_urls: [],
-    verified_metrics: [],
+    summary: 'Amrita received IGBC Platinum certification (November 2023) under the Green Campus Rating System and operates a real-time building energy monitoring and carbon monitoring system, per its official SDG-7 energy disclosures.',
+    programs: [
+      { name: 'Smart building energy monitoring', description: 'Real-time dashboard tracking Energy Use Intensity (EUI), Power Usage Effectiveness (PUE), and building-level carbon footprint, enabling remote optimization of consumption.' },
+    ],
+    source_urls: ['https://www.amrita.edu/unsdg-25/sdg7/energy-wastage-identification/'],
+    verified_metrics: [
+      { metric: 'Annual energy savings from monitoring system', value: 379200, unit: 'kWh/year', source_url: 'https://www.amrita.edu/unsdg-25/sdg7/energy-wastage-identification/' },
+    ],
   },
   {
     institution: 'Shoolini University',
     type: 'comparable',
-    summary: '',
-    programs: [],
-    source_urls: [],
-    verified_metrics: [],
+    summary: 'Shoolini University has set a target of full carbon neutrality by 2025 under its 2019 Energy and Environment Policy, and publishes UN SDG status reports documenting its solar generation and campus emissions, verified by a dedicated Centre of Excellence in Energy Science and Technology.',
+    programs: [
+      { name: 'Rooftop solar PV', description: '400 kWp rooftop photovoltaic power plant; in 2022 the campus used 6,422 GJ of electrical energy and generated 1,476.4 GJ from solar, offsetting roughly 334,237 kg of CO2.' },
+      { name: 'Wastewater treatment + reuse', description: 'Sewage Treatment Plant of 350,000 lpd capacity and Effluent Treatment Plant of 50,000 lpd capacity; recycled water is used for garden and field irrigation.' },
+    ],
+    source_urls: ['https://shooliniuniversity.com/media/pdf/iqac2024/SDG-13-Status-Report-2023-.pdf'],
+    verified_metrics: [
+      { metric: 'Rooftop solar capacity', value: 400, unit: 'kWp', source_url: 'https://shooliniuniversity.com/media/pdf/iqac2024/SDG-13-Status-Report-2023-.pdf' },
+      { metric: 'Solar generation (2022)', value: 410111, unit: 'kWh/year', source_url: 'https://shooliniuniversity.com/media/pdf/iqac2024/SDG-13-Status-Report-2023-.pdf' },
+    ],
   },
   {
     institution: 'SRM Institute of Science and Technology',
     type: 'comparable',
-    summary: '',
-    programs: [],
-    source_urls: [],
-    verified_metrics: [],
+    summary: "A third-party Green (Environmental) and Energy Audit for SRM University's Delhi-NCR (Sonepat) campus — one of SRM's constituent campuses — documents 100% LED lighting, rooftop solar generation, and STP-based wastewater reuse. Figures below are specific to the Delhi-NCR campus rather than the flagship Kattankulathur campus.",
+    programs: [
+      { name: 'Rooftop solar + LED lighting', description: '100 kW of renewable rooftop solar capacity supplementing grid electricity, alongside 100% LED lighting campus-wide.' },
+      { name: 'Wastewater treatment + biogas', description: 'Sewage Treatment Plants recycle wastewater for campus reuse; biodegradable canteen/mess waste is processed via an on-site biogas plant.' },
+    ],
+    source_urls: ['https://srmuniversity.ac.in/iqac/DOC/NAAC%20Criterion-7/7.1.6_A/7.1.6_2.%20SRM%20ECO%20AUDIT%20Report.pdf'],
+    verified_metrics: [
+      { metric: 'Rooftop solar capacity (Delhi-NCR campus)', value: 100, unit: 'kW', source_url: 'https://srmuniversity.ac.in/iqac/DOC/NAAC%20Criterion-7/7.1.6_A/7.1.6_2.%20SRM%20ECO%20AUDIT%20Report.pdf' },
+    ],
   },
   {
     institution: 'Chandigarh University',
