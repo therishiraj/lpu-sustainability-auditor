@@ -65,17 +65,17 @@ export default function TrendChart({ monthlyMetrics }) {
                 <stop offset="100%" stopColor={metric.color} stopOpacity={0} />
               </linearGradient>
             </defs>
-            <CartesianGrid stroke="#233028" strokeDasharray="3 3" vertical={false} />
+            <CartesianGrid stroke="#E1E5EA" strokeDasharray="3 3" vertical={false} />
             <XAxis
               dataKey="label"
-              stroke="#5B6D64"
-              tick={{ fill: '#8CA098', fontSize: 11, fontFamily: 'var(--font-mono)' }}
-              axisLine={{ stroke: '#233028' }}
+              stroke="#A9B1B9"
+              tick={{ fill: '#78848F', fontSize: 11, fontFamily: 'var(--font-mono)' }}
+              axisLine={{ stroke: '#E1E5EA' }}
               tickLine={false}
             />
             <YAxis
-              stroke="#5B6D64"
-              tick={{ fill: '#8CA098', fontSize: 11, fontFamily: 'var(--font-mono)' }}
+              stroke="#A9B1B9"
+              tick={{ fill: '#78848F', fontSize: 11, fontFamily: 'var(--font-mono)' }}
               axisLine={false}
               tickLine={false}
               width={54}
