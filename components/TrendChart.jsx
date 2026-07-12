@@ -4,10 +4,10 @@ import { useState, useMemo } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const METRICS = {
-  electricity: { key: 'electricity_kwh', label: 'Electricity', unit: 'kWh', color: '#E8B339' },
-  water: { key: 'water_kl', label: 'Water', unit: 'kL', color: '#4FBA8F' },
-  wasteDiverted: { key: 'waste_diverted_pct', label: 'Waste diverted', unit: '%', color: '#4FBA8F' },
-  solarShare: { key: 'solar_share_pct', label: 'Solar share', unit: '%', color: '#E8B339' },
+  electricity: { key: 'electricity_kwh', label: 'Electricity', unit: 'kWh', color: '#F7941D' },
+  water: { key: 'water_kl', label: 'Water', unit: 'kL', color: '#1671C9' },
+  wasteDiverted: { key: 'waste_diverted_pct', label: 'Waste diverted', unit: '%', color: '#1671C9' },
+  solarShare: { key: 'solar_share_pct', label: 'Solar share', unit: '%', color: '#F7941D' },
 };
 
 function CustomTooltip({ active, payload, label, metric }) {
