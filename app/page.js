@@ -12,6 +12,7 @@ import CitationsList from '@/components/CitationsList';
 import AgentTrace from '@/components/AgentTrace';
 import { EmptyState, ErrorState } from '@/components/StateScreens';
 import { loadRuns, saveRun } from '@/lib/runHistory';
+import PeerComparisonCharts from '@/components/PeerComparisonCharts';
 
 export default function Page() {
   const [hydrated, setHydrated] = useState(false);
@@ -161,6 +162,13 @@ export default function Page() {
               />
 
               <TrendChart monthlyMetrics={currentRun.headline?.monthlyMetrics} />
+
+<PeerComparisonCharts
+  peerBenchmarks={currentRun.steps?.peerResearch?.output?.peer_benchmarks || []}
+  headline={currentRun.headline}
+/>
+
+<div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div className="lg:col-span-2">
