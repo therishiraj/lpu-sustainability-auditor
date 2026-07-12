@@ -8,33 +8,33 @@ module.exports = {
     extend: {
       colors: {
         panel: {
-          bg: '#0F1512',        // deep charcoal-green — app background
-          raised: '#141B17',    // raised surface / cards
-          inset: '#0B100D',     // recessed surface / wells
-          line: '#233028',      // hairline borders
-          line2: '#2E3F35',     // slightly brighter border for hover/focus
+          bg: '#F5F7FA',
+          raised: '#FFFFFF',
+          inset: '#EEF1F5',
+          line: '#E1E5EA',
+          line2: '#CBD3DB',
         },
         amber: {
-          DEFAULT: '#E8B339',   // energy / attention
-          dim: '#8A6A2A',
-          glow: 'rgba(232, 179, 57, 0.35)',
+          DEFAULT: '#F7941D',
+          dim: '#B96F14',
+          glow: 'rgba(247, 148, 29, 0.22)',
         },
         moss: {
-          DEFAULT: '#4FBA8F',   // positive / sustainability
-          dim: '#2E6E56',
-          glow: 'rgba(79, 186, 143, 0.35)',
+          DEFAULT: '#1671C9',
+          dim: '#0F4E8C',
+          glow: 'rgba(22, 113, 201, 0.20)',
         },
         coral: {
-          DEFAULT: '#E4634C',   // alerts / degraded
-          dim: '#8A3D30',
-          glow: 'rgba(228, 99, 76, 0.35)',
+          DEFAULT: '#DC3B2E',
+          dim: '#A32A20',
+          glow: 'rgba(220, 59, 46, 0.18)',
         },
         ink: {
-          100: '#F4F7F5',
-          300: '#C7D2CC',
-          500: '#8CA098',
-          700: '#5B6D64',
-          900: '#37443E',
+          100: '#1A2230',
+          300: '#43505F',
+          500: '#78848F',
+          700: '#A9B1B9',
+          900: '#DEE2E6',
         },
       },
       fontFamily: {
@@ -42,21 +42,21 @@ module.exports = {
         mono: ['"IBM Plex Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       boxShadow: {
-        instrument: 'inset 0 1px 0 0 rgba(255,255,255,0.03), 0 1px 2px rgba(0,0,0,0.4)',
-        glowAmber: '0 0 0 1px rgba(232,179,57,0.4), 0 0 24px rgba(232,179,57,0.18)',
-        glowMoss: '0 0 0 1px rgba(79,186,143,0.4), 0 0 24px rgba(79,186,143,0.18)',
-        glowCoral: '0 0 0 1px rgba(228,99,76,0.4), 0 0 24px rgba(228,99,76,0.18)',
+        instrument: '0 1px 2px rgba(16,24,32,0.06), 0 1px 1px rgba(16,24,32,0.04)',
+        glowAmber: '0 0 0 1px rgba(247,148,29,0.35), 0 4px 14px rgba(247,148,29,0.15)',
+        glowMoss: '0 0 0 1px rgba(22,113,201,0.35), 0 4px 14px rgba(22,113,201,0.15)',
+        glowCoral: '0 0 0 1px rgba(220,59,46,0.35), 0 4px 14px rgba(220,59,46,0.15)',
       },
       backgroundImage: {
-        'grid-fade': 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.045) 1px, transparent 0)',
+        'grid-fade': 'none',
       },
       backgroundSize: {
         grid: '22px 22px',
       },
       keyframes: {
         pulseRing: {
-          '0%, 100%': { boxShadow: '0 0 0 0 rgba(232,179,57,0.45)' },
-          '50%': { boxShadow: '0 0 0 6px rgba(232,179,57,0)' },
+          '0%, 100%': { boxShadow: '0 0 0 0 rgba(247,148,29,0.4)' },
+          '50%': { boxShadow: '0 0 0 6px rgba(247,148,29,0)' },
         },
         sweep: {
           '0%': { backgroundPosition: '0% 0' },
