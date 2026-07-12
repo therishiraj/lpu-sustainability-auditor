@@ -1,93 +1,49 @@
-import { setCachedPeerInstitution } from '@/lib/cache';
-import { NextResponse } from 'next/server';
+import dataset from '@/data/lpu-usage.json';
+import { runPipeline } from '@/lib/agents/orchestrator';
 
-// One-time manual seed for the peer cache, given free-tier quota pressure
-// ahead of a live demo. Only include metrics you've personally verified
-// against a real public source — leave verified_metrics empty rather than
-// guessing, same rule your Peer Research agent follows.
-const SEED_DATA = [
-  {
-    institution: 'Vellore Institute of Technology (VIT)',
-    type: 'comparable',
-    summary: 'VIT operates a documented sustainability program including rooftop solar generation and hazardous waste management compliant with CPCB guidelines, per its official Environmental Audit 2024.',
-    programs: [
-      { name: 'Rooftop Solar + Water Heating', description: '2,813.3 kWp installed solar capacity across building rooftops, generating an average of ~420,000 units/month, supplemented by wind energy procurement agreements.' },
-    ],
-    source_urls: ['https://vit.ac.in/files/sustainability-initiatives/Environmental-Audit-2024.pdf'],
-    verified_metrics: [
-      { metric: 'Solar generation (monthly average)', value: 420000, unit: 'kWh/month', source_url: 'https://vit.ac.in/files/sustainability-initiatives/Environmental-Audit-2024.pdf' },
-    ],
-  },
-  // Add the remaining 7 the same way as you verify real numbers.
-  // If you run out of time, leave verified_metrics: [] and a short summary —
-  // Benchmarking will correctly mark those as insufficient_data rather than guessing.
-  {
-    institution: 'Manipal Academy of Higher Education (MAHE)',
-    type: 'comparable',
-    summary: '',
-    programs: [],
-    source_urls: [],
-    verified_metrics: [],
-  },
-  {
-    institution: 'Amrita Vishwa Vidyapeetham',
-    type: 'comparable',
-    summary: '',
-    programs: [],
-    source_urls: [],
-    verified_metrics: [],
-  },
-  {
-    institution: 'Shoolini University',
-    type: 'comparable',
-    summary: '',
-    programs: [],
-    source_urls: [],
-    verified_metrics: [],
-  },
-  {
-    institution: 'SRM Institute of Science and Technology',
-    type: 'comparable',
-    summary: '',
-    programs: [],
-    source_urls: [],
-    verified_metrics: [],
-  },
-  {
-    institution: 'Chandigarh University',
-    type: 'comparable',
-    summary: '',
-    programs: [],
-    source_urls: [],
-    verified_metrics: [],
-  },
-  {
-    institution: 'KIIT (Kalinga Institute of Industrial Technology)',
-    type: 'comparable',
-    summary: '',
-    programs: [],
-    source_urls: [],
-    verified_metrics: [],
-  },
-  {
-    institution: 'BITS Pilani',
-    type: 'comparable',
-    summary: '',
-    programs: [],
-    source_urls: [],
-    verified_metrics: [],
-  },
-];
+// The Anthropic SDK needs the Node.js runtime, not the Edge runtime.
+export const runtime = 'nodejs';
+export const maxDuration = 300;
+// Serverless function time budget. The pipeline makes 5 sequential Claude
+// calls, one of which does live web research, so give it real headroom.
+// Vercel Hobby caps functions at 60s regardless of this value — Pro/Enterprise
+// plans can use up to 300s (or 800s with Fluid Compute). See README
 
-export async function GET() {
-  const results = [];
-  for (const entry of SEED_DATA) {
-    if (!entry.summary) {
-      results.push({ institution: entry.institution, skipped: true, reason: 'no verified data yet' });
-      continue;
-    }
-    await setCachedPeerInstitution(entry.institution, entry);
-    results.push({ institution: entry.institution, seeded: true });
-  }
-  return NextResponse.json({ results });
+export async function POST() {
+  const encoder = new TextEncoder();
+
+  const stream = new ReadableStream({
+    async start(controller) {
+      let closed = false;
+      const emit = (event) => {
+        if (closed) return;
+        controller.enqueue(encoder.encode(JSON.stringify(event) + '\n'));
+      };
+
+      try {
+        emit({ type: 'start', startedAt: new Date().toISOString() });
+        const result = await runPipeline(dataset, emit);
+        emit({
+          type: 'complete',
+          finalScore: result.finalScore,
+          citations: result.citations,
+          report: result.results.report?.output?.markdown ?? null,
+          headline: result.headline,
+        });
+      } catch (err) {
+        emit({ type: 'error', error: err.message || 'The audit pipeline failed.' });
+      } finally {
+        closed = true;
+        controller.close();
+      }
+    },
+  });
+
+  return new Response(stream, {
+    headers: {
+      'Content-Type': 'application/x-ndjson; charset=utf-8',
+      'Cache-Control': 'no-cache, no-transform',
+      'X-Accel-Buffering': 'no',
+    },
+  });
 }
