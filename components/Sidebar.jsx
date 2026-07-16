@@ -1,83 +1,241 @@
 'use client';
 
-import { Play, Loader2, Inbox } from 'lucide-react';
+import {
+  Play,
+  Loader2,
+  Inbox,
+  History,
+  LayoutDashboard,
+  BarChart3,
+  FileText,
+  GitBranch,
+  Leaf,
+  Trophy,
+} from 'lucide-react';
+
 import { formatTimestamp, scoreBand } from '@/lib/format';
 
-export default function Sidebar({ runs, currentRunId, onSelectRun, onRunNew, isRunning }) {
+export default function Sidebar({
+  runs,
+  currentRunId,
+  onSelectRun,
+  onRunNew,
+  isRunning,
+}) {
   return (
-    <aside className="md:w-72 md:flex-shrink-0 border-b md:border-b-0 md:border-r border-panel-line bg-panel-raised/40">
-      <div className="p-4 md:p-5 flex flex-col gap-4 md:sticky md:top-0 md:h-[calc(100vh-65px)]">
-        <button
-          onClick={onRunNew}
-          disabled={isRunning}
-          className="flex items-center justify-center gap-2 rounded-md bg-moss/15 border border-moss/40 text-moss px-4 py-2.5 text-sm font-medium hover:bg-moss/25 hover:shadow-glowMoss disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-moss/15 disabled:hover:shadow-none transition-all"
-        >
-          {isRunning ? (
-            <>
-              <Loader2 size={16} className="animate-spin" />
-              Audit running…
-            </>
-          ) : (
-            <>
-              <Play size={16} strokeWidth={2.5} />
-              Run new audit
-            </>
-          )}
-        </button>
+    <aside className="w-full md:w-80 md:flex-shrink-0 bg-white border-r border-gray-200 shadow-sm">
 
-        <div className="flex-1 min-h-0 flex flex-col">
-          <div className="text-xs font-mono uppercase tracking-wider text-ink-500 mb-2 px-1">
-            Run history
+      <div className="flex flex-col h-full p-6">
+
+        {/* Project Card */}
+
+        <div className="rounded-2xl bg-gradient-to-br from-[#F7941D] to-[#EA7B00] text-white p-5 shadow-lg">
+
+          <div className="flex items-center gap-3 mb-3">
+
+            <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-white/20">
+
+              <Leaf size={24} />
+
+            </div>
+
+            <div>
+
+              <h2 className="font-bold text-lg">
+                Sustainability AI
+              </h2>
+
+              <p className="text-sm text-orange-100">
+                Smart Campus Governance
+              </p>
+
+            </div>
+
+          </div>
+
+          <button
+            onClick={onRunNew}
+            disabled={isRunning}
+            className="
+            w-full
+            mt-4
+            rounded-xl
+            bg-white
+            text-[#F7941D]
+            font-semibold
+            py-3
+            transition
+            hover:scale-[1.02]
+            hover:shadow-md
+            disabled:opacity-60
+            disabled:cursor-not-allowed
+            flex
+            justify-center
+            items-center
+            gap-2
+            "
+          >
+            {isRunning ? (
+              <>
+                <Loader2 size={18} className="animate-spin" />
+                Running Audit...
+              </>
+            ) : (
+              <>
+                <Play size={18} />
+                Run New Audit
+              </>
+            )}
+          </button>
+
+        </div>
+
+        {/* Navigation */}
+
+        <div className="mt-8">
+
+          <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-semibold">
+            Dashboard
+          </p>
+
+          <div className="space-y-2">
+
+            <div className="flex items-center gap-3 rounded-xl bg-orange-50 text-[#F7941D] px-4 py-3 font-semibold">
+              <LayoutDashboard size={18} />
+              Overview
+            </div>
+
+            <div className="flex items-center gap-3 rounded-xl px-4 py-3 text-gray-600 hover:bg-gray-100 transition">
+              <BarChart3 size={18} />
+              Analytics
+            </div>
+
+            <div className="flex items-center gap-3 rounded-xl px-4 py-3 text-gray-600 hover:bg-gray-100 transition">
+              <Trophy size={18} />
+              Peer Benchmark
+            </div>
+
+            <div className="flex items-center gap-3 rounded-xl px-4 py-3 text-gray-600 hover:bg-gray-100 transition">
+              <FileText size={18} />
+              Reports
+            </div>
+
+            <div className="flex items-center gap-3 rounded-xl px-4 py-3 text-gray-600 hover:bg-gray-100 transition">
+              <GitBranch size={18} />
+              Agent Pipeline
+            </div>
+
+          </div>
+
+        </div>
+
+        {/* History */}
+
+        <div className="mt-8 flex-1 flex flex-col min-h-0">
+
+          <div className="flex items-center gap-2 mb-4">
+
+            <History
+              size={18}
+              className="text-[#F7941D]"
+            />
+
+            <h3 className="font-semibold text-gray-800">
+              Audit History
+            </h3>
+
           </div>
 
           {runs.length === 0 ? (
-            <div className="flex flex-col items-center justify-center gap-2 py-10 text-center px-4 rounded-md border border-dashed border-panel-line2 text-ink-500">
-              <Inbox size={20} strokeWidth={1.5} />
-              <p className="text-xs leading-relaxed">
-                No audits yet. Run one to start building score history.
+
+            <div className="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 py-12 px-4 text-center">
+
+              <Inbox
+                size={28}
+                className="text-gray-400 mb-3"
+              />
+
+              <p className="text-sm text-gray-500">
+                No audit history available.
               </p>
+
+              <p className="text-xs text-gray-400 mt-2">
+                Run your first sustainability audit.
+              </p>
+
             </div>
+
           ) : (
-            <ul className="space-y-1.5 overflow-y-auto pr-1 md:max-h-[calc(100vh-220px)]">
+
+            <div className="space-y-3 overflow-y-auto pr-2">
+
               {runs.map((run) => {
-                const band = scoreBand(run.finalScore);
+
                 const active = run.id === currentRunId;
+
+                const band = scoreBand(run.finalScore);
+
                 return (
-                  <li key={run.id}>
-                    <button
-                      onClick={() => onSelectRun(run.id)}
-                      className={`w-full text-left rounded-md border px-3 py-2.5 transition-colors ${
+
+                  <button
+                    key={run.id}
+                    onClick={() => onSelectRun(run.id)}
+                    className={`
+                      w-full
+                      rounded-xl
+                      border
+                      p-4
+                      text-left
+                      transition-all
+                      duration-200
+                      ${
                         active
-                          ? 'border-moss/50 bg-moss/10'
-                          : 'border-transparent hover:border-panel-line2 hover:bg-panel-inset'
-                      }`}
-                    >
-                      <div className="flex items-center justify-between gap-2">
-                        <span className="text-xs text-ink-300 font-mono" data-numeric="true">
-                          {formatTimestamp(run.timestamp)}
-                        </span>
-                        <span
-                          className="flex-shrink-0 rounded px-1.5 py-0.5 text-xs font-mono font-semibold"
-                          style={{
-                            color: band.hex,
-                            backgroundColor: `${band.hex}1A`,
-                          }}
-                          data-numeric="true"
-                        >
-                          {run.finalScore ?? '—'}
-                        </span>
-                      </div>
-                      <div className="text-xs text-ink-500 mt-1">
-                        {run.latestMonth} · {band.label}
-                      </div>
-                    </button>
-                  </li>
+                          ? 'border-[#F7941D] bg-orange-50 shadow-md'
+                          : 'border-gray-200 bg-white hover:border-[#F7941D] hover:shadow'
+                      }
+                    `}
+                  >
+
+                    <div className="flex items-center justify-between">
+
+                      <span className="text-xs text-gray-500">
+                        {formatTimestamp(run.timestamp)}
+                      </span>
+
+                      <span
+                        className="rounded-lg px-2 py-1 text-xs font-bold"
+                        style={{
+                          color: band.hex,
+                          backgroundColor: `${band.hex}18`,
+                        }}
+                      >
+                        {run.finalScore ?? '--'}
+                      </span>
+
+                    </div>
+
+                    <div className="mt-3 text-sm font-semibold text-gray-800">
+                      {run.latestMonth}
+                    </div>
+
+                    <div className="text-xs text-gray-500 mt-1">
+                      {band.label}
+                    </div>
+
+                  </button>
+
                 );
+
               })}
-            </ul>
+
+            </div>
+
           )}
+
         </div>
+
       </div>
+
     </aside>
   );
 }
